@@ -1,49 +1,8 @@
 
 # coding: utf-8
 
-# Before you turn this problem in, make sure everything runs as expected. First, **restart the kernel** (in the menubar, select Kernel$\rightarrow$Restart) and then **run all cells** (in the menubar, select Cell$\rightarrow$Run All).
-# 
-# Make sure you fill in any place that says `YOUR CODE HERE` or "YOUR ANSWER HERE", as well as your name and collaborators below:
+# ** This file is adapted from a Jupyter notebook created as an assignment by Professors Zachary Ives and Clayton Greenberg for CIS 545 Big Data Analytics **
 
-# In[ ]:
-
-
-NAME = "Conner Evans"
-COLLABORATORS = ""
-
-
-# ---
-
-# # Homework 2, Basic Part: Big Data and Graph Data
-# ## Due October 15, 2018 by 10pm
-# ### Worth 100 points in total
-# 
-# For this assignment, we will focus on graph data.  You saw an instance of this with Homework 1 -- the airline flight network is actually a graph -- but we only did limited kinds of computation over the graph.  However, many real-world datasets are, or can be modeled by, graphs (or trees which are special cases of graphs).  Examples include:
-# 
-# * Networks (social networks, the Web, the connectome, the Internet, traffic networks, …)
-# * Sets of data in which some of the data is more closely connected than other parts of the data (edges may represent weighted similarity or affinity)
-# * Phylogenetic trees, grammars, etc.
-# 
-# For this assignment, we will be doing a few common operations on graphs.  In the next assignment, when we have the power of matrices, we will do some further computation over the same graph data.  (It’s very common to encode graph connectivity through an adjacency matrix that we’ll discuss in lecture.)
-# 
-# 
-# *Submission*. See the external document for submission information.  Remember to also do **Homework 2-Advanced**.
-
-# ## 2. Getting Started with Apache Spark (within Docker)
-# 
-# Apache Spark, which has become the de facto successor to Apache Hadoop, is a complex, cluster-based data processing system that was written in Scala.  It leverages a wide variety of distributed tools and components used for big data processing.  It interfaces “smoothly” to Python, but be forewarned that there are some rough edges.  For those interested in why, there are a few reasons:
-# 
-# * Scala has slightly different notions of types (especially things like Rows) and handles missing values (nulls) differently from Python.
-# * The Scala-based Spark “engine” can’t just run Python functions as it’s doing data processing.  This means that you want to be careful to use Spark’s library of functions, or the special mechanisms for inserting “user defined functions.”
-# * DataFrames on Spark are “sharded,” so there is no single object corresponding to the DataFrame!
-# 
-# While Spark DataFrames try to emulate the same programming style as Pandas DataFrames, there are some differences in how you express things.  Please refer to the Lecture Slides for our take on the differences.  You may also find the following Web pages to be useful resources for understanding Spark vs Pandas DataFrames:
-# 
-# https://lab.getbase.com/pandarize-spark-dataframes/
-# https://ogirardot.wordpress.com/2015/07/31/from-pandas-to-apache-sparks-dataframe/ 
-# 
-# For this assignment, we are going to get familiar with Spark without worrying too much about sharding and distribution.  We are going to run Spark on your Docker container.  This isn’t really using it to its strengths -- and in fact you might find Spark to be unexpectedly slow -- but it will get you comfortable with programming in Spark without worrying about distributed nodes, clusters, and spending real dollars on the cloud.  Your code, if written properly, will “naturally scale” to clusters running on the Cloud.  Later in the term we’ll connect your Jupyter instance to Spark running on the cloud -- to handle “truly big data.”
-# 
 # 
 # ### Step 2.1 Initializing a Connection to Spark
 # 
